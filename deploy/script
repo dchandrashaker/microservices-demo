@@ -12,3 +12,10 @@ kubectl apply -f complete-demo.yaml
  kubectl get pods --namespace sock-shop
 
  kubectl get services --namespace sock-shop
+
+apt install ngrok
+
+ngrok config add-authtoken <1ya7PM7o>
+
+ngrok http 30001
+

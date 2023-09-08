@@ -1,0 +1,14 @@
+git clone https://github.com/microservices-demo/microservices-demo
+cd microservices-demo
+
+cd deploy
+
+cd kubernetes
+
+kubectl create namespace sock-shop
+
+kubectl apply -f complete-demo.yaml
+
+ kubectl get pods --namespace sock-shop
+
+ kubectl get services --namespace sock-shop

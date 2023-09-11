@@ -1,4 +1,4 @@
-git clone https://github.com/microservices-demo/microservices-demo
+git clone https://github.com/dchandrashaker/microservices-demo
 cd microservices-demo
 
 cd deploy
@@ -14,6 +14,8 @@ kubectl apply -f complete-demo.yaml
  kubectl get services --namespace sock-shop
 
 apt install ngrok
+
+#Get ngrox authkey , by loggin into ngrok website account, we need to create our own account to get it.
 
 ngrok config add-authtoken <1ya7PM7o>
 

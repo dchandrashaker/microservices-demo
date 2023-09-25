@@ -1,17 +1,44 @@
+FinalScript
+
+
+in aws shell
+wget -q https://raw.githubusercontent.com/aws-samples/eks-workshop-v2/stable/lab/cfn/eks-workshop-ide-cfn.yaml -O eks-workshop-ide-cfn.yaml
+aws cloudformation deploy --stack-name eks-workshop-ide \
+    --template-file ./eks-workshop-ide-cfn.yaml \
+    --parameter-overrides RepositoryRef=stable \
+    --capabilities CAPABILITY_NAMED_IAM
+
+
+aws cloudformation describe-stacks --stack-name eks-workshop-ide \
+    --query 'Stacks[0].Outputs[?OutputKey==`Cloud9Url`].OutputValue' --output text
+
+
+open clou9ide
+
+in its terminal
+aws sts get-caller-identity
+
+export EKS_CLUSTER_NAME=eks-workshop
+curl -fsSL https://raw.githubusercontent.com/aws-samples/eks-workshop-v2/stable/cluster/eksctl/cluster.yaml | \
+envsubst | eksctl create cluster -f -
+
+use-cluster $EKS_CLUSTER_NAME
+
 git clone https://github.com/dchandrashaker/microservices-demo
-cd microservices-demo
-
-cd deploy
-
-cd kubernetes
+cd microservices-demo/deploy/kubernetes/
 
 kubectl create namespace sock-shop
 
 kubectl apply -f complete-demo.yaml
 
+ sleep 10
+
  kubectl get pods --namespace sock-shop
 
+ sleep 10
+
  kubectl get services --namespace sock-shop
+
 
 apt install ngrok
 
